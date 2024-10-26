@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Image } from 'lucide-react';
-import Header from '@/components/Header';
+import Header from '../components/Header';
 import 'react-phone-input-2/lib/style.css'; // Import the library's CSS
 import PhoneInput from 'react-phone-input-2'; // Import PhoneInput component
 

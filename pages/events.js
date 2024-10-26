@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Search } from 'lucide-react';
-import Header from '@/components/Header';
+import Header from '../components/Header';
 
 const EventCard = ({ title, dateRange, location }) => (
   <div className="flex flex-col">
