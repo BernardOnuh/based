@@ -2,21 +2,61 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { 
+  ConnectWallet, 
+  Wallet, 
+  WalletDropdown, 
+  WalletDropdownDisconnect, 
+} from '@coinbase/onchainkit/wallet'; 
+import {
+  Address,
+  Avatar,
+  Name,
+  Identity,
+} from '@coinbase/onchainkit/identity';
+import { color } from '@coinbase/onchainkit/theme';
+
+
 
 // Wallet connection components
 const MobileConnectWallet = () => (
-  <ConnectWallet 
-    btnTitle="Connect Wallet"
-    className="w-full px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-white transition-colors"
-  />
+<div className="rounded-md">
+      <Wallet>
+        <ConnectWallet>
+          <Avatar className="h-6 w-6" />
+          <Name />
+        </ConnectWallet>
+        <WalletDropdown>
+          <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+            <Avatar />
+            <Name />
+            <Address className={color.foregroundMuted} />
+          </Identity>
+          <WalletDropdownDisconnect />
+        </WalletDropdown>
+      </Wallet>
+    </div>
 );
 
 const DesktopConnectWallet = () => (
-  <ConnectWallet 
-    btnTitle="Connect Wallet"
-    className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-white transition-colors"
-  />
+<div className="rounded-md border border-white">
+      <Wallet>
+        <ConnectWallet>
+          <Avatar className="h-6 w-6" />
+          <Name />
+        </ConnectWallet>
+        <div className='bg-black'>
+        <WalletDropdown>
+          <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+            <Avatar />
+            <Name />
+            <Address className={color.foregroundMuted} />
+          </Identity>
+          <WalletDropdownDisconnect />
+        </WalletDropdown>
+        </div>
+      </Wallet>
+    </div>
 );
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +84,9 @@ export default function Header() {
           >
             Create Event
           </Link>
+          
           <DesktopConnectWallet />
+          
         </div>
 
         {/* Mobile menu button */}

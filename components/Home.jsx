@@ -2,6 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import OnchainPopup from './OnchainPopup';
 import Link from 'next/link';
+import { 
+  ConnectWallet, 
+  Wallet, 
+  WalletDropdown, 
+  WalletDropdownDisconnect, 
+} from '@coinbase/onchainkit/wallet'; 
+import {
+  Address,
+  Avatar,
+  Name,
+  Identity,
+} from '@coinbase/onchainkit/identity';
+import { color } from '@coinbase/onchainkit/theme';
+
 
 const MainContent = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -35,7 +49,6 @@ const MainContent = () => {
               </button>
               </Link>
             </div>
-
             {/* Right side content */}
             <div className="lg:w-1/2 relative">
               <Image src="/Hero.svg" width={513} height={549} alt="Hero image" />
